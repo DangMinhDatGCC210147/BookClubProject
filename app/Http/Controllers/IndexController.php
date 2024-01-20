@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\TotalFunds;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -17,7 +18,13 @@ class IndexController extends Controller
     }
     public function index()
     {
-        return view('index');
+        if (Auth::check()) {
+            // Nếu đã đăng nhập, hiển thị trang chính
+            return view('index');
+        } else {
+            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            return redirect('/');
+        }
     }
 
     public function indexleader()
