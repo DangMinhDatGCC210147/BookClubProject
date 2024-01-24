@@ -19,7 +19,7 @@ class MemberController extends Controller
     }
     public function create()
     {  
-        $users = User::all();
+        $users = User::where('role', '!=', 2)->get();
         return view('leaders.createMember', compact('users'));
     }
 
