@@ -44,6 +44,7 @@
                                 <th>Date</th>
                                 <th>Venue</th>
                                 <th>Status</th>
+                                <th>Score</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,6 +68,7 @@
                                             Unknown Status
                                         @endif
                                     </td>
+                                    <td>{{$event->score}}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <a href="{{ route('events.edit', ['event' => $event->id]) }}" class="pr-5"><i class="ti ti-pencil text-info"></i></a>
@@ -94,6 +96,7 @@
                                 <th>Date</th>
                                 <th>Venue</th>
                                 <th>Status</th>
+                                <th>Score</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

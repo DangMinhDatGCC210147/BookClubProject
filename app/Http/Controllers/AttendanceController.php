@@ -50,7 +50,7 @@ class AttendanceController extends Controller
     
             if ($existingAttendance) {
                 // Attendance already exists, you can handle this case (e.g., redirect back with a message)
-                return redirect()->back()->with('error', 'Attendance already recorded for this student in the selected event.');
+                return redirect()->back()->with('info', 'Attendance already recorded for this student in the selected event.');
             }
     
             // Create a new attendance record

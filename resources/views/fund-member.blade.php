@@ -78,8 +78,7 @@
                         <div class="holder">
                             <h2>Your amount needs to be paid</h2>
                             <h4>Remember to capture your transaction screen result and send to treasurer</h4>
-                            <h5 style="font-weight: bold; color: rgb(181, 25, 25)">Syntax for transaction: [Yourname] +
-                                [Month]</h5>
+                            <h5 style="font-weight: bold; color: rgb(181, 25, 25)">Syntax for transaction: [Your name] + [Month]</h5>
                                 <ul class="list-unstyled block">
                                     <li>
                                         <div class="txt-holder">

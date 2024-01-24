@@ -32,15 +32,15 @@
                         <div class="row mbn-20">
                             <div class="col-12 mb-20">
                                 <div class="row mbn-20">
-                                    <div class="col-6 mb-20">
+                                    <div class="col-lg-6 mb-20">
                                         <label for="formLayoutUsername4">Event Name</label>
                                         <input type="text" id="nameEvent" name="nameEvent" value="{{ isset($event) ? $event->nameEvent : "" }}" class="form-control" readonly>
                                     </div>
-                                    <div class="col-3 mb-20">
+                                    <div class="col-lg-3 mb-20">
                                         <label for="formLayoutUsername4">Time Start</label>
                                         <input type="time" id="time_start" name="time_start" value="{{ isset($event) ? \Carbon\Carbon::parse($event->time_start)->format('H:i') : "" }}" class="form-control" readonly>
                                     </div>
-                                    <div class="col-3 mb-20">
+                                    <div class="col-lg-3 mb-20">
                                         <label for="formLayoutUsername4">Time End</label>
                                         <input type="time" id="time_end" name="time_end" value="{{ isset($event) ? \Carbon\Carbon::parse($event->time_end)->format('H:i') : "" }}" class="form-control" readonly>
                                     </div>
@@ -55,7 +55,7 @@
                                 </div> 
                             </div>                                                                        
                             <div class="col-12 mb-20">
-                                <input type="submit" value="{{ isset($event) ? 'Update' : 'Submit' }}" class="button button-primary">
+                                <input type="submit" value="Take Note" class="button button-primary">
                                 @if(isset($event))
                                     <hr>
                                     <a href="{{ route('events.index') }}">

@@ -26,9 +26,10 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        // if (empty($request->idSt) || empty($request->phoneNumber) || empty($request->image) || empty($request->gender) || empty($request->dateOfBirth) || empty($request->joiningDate) || empty($request->course)) {
-        //     return redirect()->back()->with('warning', 'All fields are required. Please fill in all the fields.');
+        // if (empty($request->image)) {
+        //     return redirect()->back()->with('warning', 'Image fields are required. Please fill in all the fields.');
         // }
+        try {
         // Validate the request
         $request->validate([
             'idSt' => 'required|string|max:9|unique:members,idSt',
@@ -37,12 +38,11 @@ class MemberController extends Controller
             'dateOfBirth' => 'required|date',
             'course' => 'required|string|max:5',
             'email' => 'required|email|unique:members,email',
-            'phoneNumber' => 'required|string',
+            'phoneNumber' => 'required|string|regex:/^0[0-9]{9}$/',
             'joiningDate' => 'required|date',
             'gender' => 'required|int',
         ]);
         
-        try {
             // Lưu tập tin vào storage/app/public/images
             $imageName = $request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('images/members'), $imageName);
@@ -88,7 +88,7 @@ class MemberController extends Controller
             // foreach ($errors as $error) {
             //     toastr()->error($error);
             // }
-            return back()->withInput()->with('error', 'Enter infomation again!');
+            return back()->withInput()->with('error', 'Enter information again!');
         }
     }
     

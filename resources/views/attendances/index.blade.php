@@ -43,6 +43,7 @@
                                 <th>Time</th>
                                 <th>Date Check-in</th>
                                 <th>Event Name</th>
+                                <th>Event Score</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -54,7 +55,8 @@
                                     <td>{{ $attendance->member->name }}</p></td>
                                     <td>{{ \Carbon\Carbon::parse($attendance->attendance_date)->format('H:i:s') }}</td>
                                     <td>{{ $attendance->attendance_date->format('d-m-Y') }}</td>
-                                    <th>{{ $attendance->event->nameEvent }}</th>
+                                    <td>{{ $attendance->event->nameEvent }}</td>
+                                    <td>{{ $attendance->event->score}}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             {{-- <a href="{{ route('attendances.edit', ['event' => $event->id]) }}" class="mr-2"><i class="ti ti-pencil text-info"></i></a> --}}
@@ -73,11 +75,12 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Image</th>
-                                <th>Event Name</th>
+                                <th>Student Id</th>
+                                <th>Student Name</th>
                                 <th>Time</th>
                                 <th>Date Check-in</th>
                                 <th>Event Name</th>
+                                <th>Event Score</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
