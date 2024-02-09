@@ -53,7 +53,7 @@ class UserController extends Controller
             $user = Auth::user(); // Lấy thông tin người dùng đã đăng nhập
             session(['idSt' => $user->idSt]);
             // Kiểm tra giá trị của trường 'role'
-            if ($user->role == 0) {
+            if ($user->role == 0 || $user->role == 2) {
                 // Nếu 'role' là 0, chuyển hướng đến trang leader
                 return redirect('/leader')->with('success', 'Login as leader successfully');
             } elseif ($user->role == 1) {

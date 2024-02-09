@@ -13,7 +13,7 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $members = Member::all();
+        $members = Member::where('idSt', '!=', 'GCC210147')->get();
         $totalMembers = $members->count();
         return view('leaders.members', compact('members', 'totalMembers'));
     }

@@ -12922,3 +12922,10 @@ body.skin-dark .cus-radio.light .icon::before {
   left: auto;
   right: 0;
 }
+
+.main-logo img:nth-child(1){
+	max-width: 120px !important;
+}
+.main-logo img:nth-child(2){
+	max-width: 120px !important;
+}

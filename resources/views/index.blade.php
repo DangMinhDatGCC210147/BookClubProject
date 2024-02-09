@@ -6,7 +6,7 @@
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
         <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-            style="background-image: url(http://placehold.it/1920x205);">
+            style="background-image: url({{asset('./images/index/1.png')}});">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -29,24 +29,18 @@
                     <div class="col-xs-12">
                         <div class="txt">
                             <h2>WHO WE ARE?</h2>
-                            <p>Morbi in erat malesuada, sollicitudin massa at, tristique nisl. Maecenas id eros
-                                scelerisque, vulputate tortor quis, efficitur arcu sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Umco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit sse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                <strong>Vestibulum sit amet metus euismod, condimentum lectus id, ultricessem.</strong>
+                            <p>Tại BookClub Greenwich, chúng tớ là điểm giao lưu văn hóa, nơi thắt chặt những tâm hồn đam mê văn hóa đọc. Nơi đây không chỉ là một câu lạc bộ đọc sách, mà chúng tớ tự hào là một gia đình, nơi mọi người được mời gọi để chia sẻ suy nghĩ, thảo luận và khám phá thế giới thông qua từng trang sách. Đồng thời, chúng tớ còn tạo ra những sự kiện tuyệt vời, giới thiệu những nghệ sĩ và người nổi tiếng, những người truyền cảm hứng và chữa lành tâm hồn. Ngoài ra, tiêu chí của Câu lạc bộ Sách chính là tạo ra không gian để phát triển văn hóa đọc bằng những người có cùng sự đam mê đối với sách - phát triển về trí tuệ con người. Hãy trở thành một phần của gia đình chúng tớ, nơi mà chúng ta cùng nhau cùng nhau tìm hiểu và chia sẻ niềm đam mê với văn hóa và nghệ thuật.
                             </p>
-                            <p>Fusce mattis nunc lacus, vulputate facilisis dui efficitur ut. Vestibulum sit amet
-                                metus euismod, condimentum lectus id, ultrices sem. Morbi in erat malesuada,
-                                sollicitudin massa at, </p>
+                            <h2>Join Us: Let's Explore the World of Books Together</h2>
+                            <p>Bạn là người yêu sách? Bạn muốn tham gia vào một cộng đồng năng động và chia sẻ những niềm đam mê với những người khác? Hãy đến với BookClub Greenwich Việt Nam tại Cần Thơ! Chúng tôi mong muốn chào đón bạn để cùng nhau khám phá thế giới tuyệt vời của sách và văn hóa.</p>
                         </div>
                         <div class="mt-follow-holder">
                             <span class="title">Follow Us</span>
                             <!-- Social Network of the Page -->
                             <ul class="list-unstyled social-network">
-                                <li><a href="https://www.instagram.com/bookclubcantho?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="https://www.facebook.com/profile.php?id=100063655476786"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.instagram.com/bookclubcantho?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100063655476786" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                                 {{-- <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="#"><i class="fa fa-whatsapp"></i></a></li> --}}
@@ -74,7 +68,7 @@
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="{{ asset('images/index/DSCF2577.jpg')}}" alt="Nguyễn Huỳnh Ngọc Thi">
+                                        <img src="{{ asset('./images/leaders/leader.jpg')}}" alt="Nguyễn Huỳnh Ngọc Thi">
                                         {{-- <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -92,7 +86,7 @@
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="Nguyễn Thị Tú Trinh">
+                                        <img src="{{asset('./images/leaders/viceleader.jpg')}}" alt="Nguyễn Thị Tú Trinh">
                                         {{-- <ul class="list-unstyled social-icon">
                                             <li><i class="fa fa-twitter"></i></li>
                                             <li><i class="fa fa-facebook"></i></li>
@@ -110,7 +104,7 @@
                             <div class="col wow fadeInLeft" data-wow-delay="0.4s">
                                 <div class="img-holder">
                                     <a href="#">
-                                        <img src="http://placehold.it/280x290" alt="La Xuân Uyên">
+                                        <img src="{{asset('./images/leaders/treasurer.jpg')}}" alt="La Xuân Uyên">
                                     </a>
                                 </div>
                                 <div class="mt-txt">
@@ -138,49 +132,49 @@
             <ul class="list-unstyled work-slider">
                 <li>
                     <div class="img-holder">
-                        <img src="http://placehold.it/545x545" alt="image description">
+                        <img src="{{asset('./images/index/HAHA.png')}}" alt="image description">
                     </div>
                     <div class="img-holder">
                         <div class="coll1">
-                            <img src="http://placehold.it/245x310" alt="image description">
+                            <img src="{{asset('./images/index/HAHA 1.png')}}" alt="image description">
                         </div>
                         <div class="coll2">
-                            <img src="http://placehold.it/385x310" alt="image description">
+                            <img src="{{asset('./images/index/HAHA 2.png')}}" alt="image description">
                         </div>
                         <div class="coll3">
-                            <img src="http://placehold.it/640x220" alt="image description">
+                            <img src="{{asset('./images/index/HAHA 3.png')}}" alt="image description">
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="img-holder">
-                        <img src="http://placehold.it/545x545" alt="image description">
+                        <img src="{{asset('./images/index/Tri_lieu_cam_xuc (1).png')}}" alt="image description">
                     </div>
                     <div class="img-holder">
                         <div class="coll1">
-                            <img src="http://placehold.it/245x310" alt="image description">
+                            <img src="{{asset('./images/index/Tri_lieu_cam_xuc (4).png')}}" alt="image description">
                         </div>
                         <div class="coll2">
-                            <img src="http://placehold.it/385x310" alt="image description">
+                            <img src="{{asset('./images/index/Tri_lieu_cam_xuc (3).png')}}" alt="image description">
                         </div>
                         <div class="coll3">
-                            <img src="http://placehold.it/640x220" alt="image description">
+                            <img src="{{asset('./images/index/Tri_lieu_cam_xuc (2).png')}}" alt="image description">
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="img-holder">
-                        <img src="http://placehold.it/545x545" alt="image description">
+                        <img src="{{asset('./images/index/loi_noi_doi (1).png')}}" alt="image description">
                     </div>
                     <div class="img-holder">
                         <div class="coll1">
-                            <img src="http://placehold.it/245x310" alt="image description">
+                            <img src="{{asset('./images/index/loi_noi_doi (2).png')}}" alt="image description">
                         </div>
                         <div class="coll2">
-                            <img src="http://placehold.it/385x310" alt="image description">
+                            <img src="{{asset('./images/index/loi_noi_doi (3).png')}}" alt="image description">
                         </div>
                         <div class="coll3">
-                            <img src="http://placehold.it/640x220" alt="image description">
+                            <img src="{{asset('./images/index/loi_noi_doi (4).png')}}" alt="image description">
                         </div>
                     </div>
                 </li>

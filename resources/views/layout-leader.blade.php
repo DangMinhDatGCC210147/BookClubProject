@@ -52,10 +52,10 @@
                 <div class="row justify-content-between align-items-center">
 
                     <!-- Header Logo (Header Left) Start -->
-                    <div class="header-logo col-auto">
+                    <div class="header-logo col-auto main-logo">
                         <a href="{{ route('leaders.index')}}">
-                            <img src="" alt="Logo">
-                            <img src="" class="logo-light" alt="Logo">
+                            <img src="{{asset('./images/logo/logo.png')}}" alt="Logo">
+                            <img src="{{asset('./images/logo/logo.png')}}" class="logo-light" alt="Logo">
                         </a>
                     </div><!-- Header Logo (Header Left) End -->
 
@@ -101,9 +101,9 @@
                                         <a class="toggle" href="#">
                                             <span class="user">
                                         <span class="avatar">
-                                            <img src="#">
+                                            <img src="{{asset('./../../assets/images/avatar/Asset1.png')}}">
                                             <span class="status"></span>
-                                            <span class="name"></span>
+                                            {{-- <span class="name"></span> --}}
                                         </span>
                                         </a>
 

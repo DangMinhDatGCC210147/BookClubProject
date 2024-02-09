@@ -12627,3 +12627,7 @@ a:focus {
 .img-holder img{
 	max-width: 1200px;
 }
+
+.main-logo img{
+	max-width: 85px;
+}

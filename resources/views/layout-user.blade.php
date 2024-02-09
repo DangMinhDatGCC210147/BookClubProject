@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookClub | Official Website</title>
     <!-- include the site stylesheet -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('./images/mt-logo copy.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('./images/logo/logo.png') }}">
     <link
         href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic%7cMontserrat:400,700%7cOxygen:400,300,700'
         rel='stylesheet' type='text/css'>
@@ -112,8 +112,11 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <!-- mt logo start here -->
-                                <div class="mt-logo"><a href="{{ route('user.index') }}"><img
-                                            src="{{ asset('./images/mt-logo.png') }}" alt="schon"></a></div>        
+                                <div class="mt-logo main-logo">
+                                    <a href="{{ route('user.index') }}">
+                                        <img src="{{ asset('./images/logo/logo.png') }}" alt="Book CLub">
+                                    </a>
+                                </div>        
                                 <!-- mt icon list start here -->
                                 <div class="mt-logo"><h4 style="padding-left: 4vw; font-size: 100%">Welcome,<Strong> {{ Auth::user()->name }} </Strong></h4></div>
                                 <ul class="mt-icon-list">
@@ -136,9 +139,14 @@
                                             <a class="" href="{{ route('user.event') }}">EVENT</a>
                                         </li>
                                         @auth
-                                            @if(Auth::user()->member)
+                                            @if(Auth::user()->member || Auth::user()->role == 0 || Auth::user()->role == 2)
                                                 <li>
                                                     <a class="" href="{{ route('funds.user.index') }}">Pay Fund</a>
+                                                </li>
+                                            @endif
+                                            @if(Auth::user()->role == 0 || Auth::user()->role == 2)
+                                                <li>
+                                                    <a class="" href="{{ route('leaders.index') }}">LEADER</a>
                                                 </li>
                                             @endif
                                         @endauth
@@ -229,15 +237,11 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 col-md-6 mt-paddingbottomsm">
                                 <!-- F Widget About of the Page -->
-                                <div class="f-widget-about">
+                                <div class="f-widget-about main-logo">
                                     <div class="logo">
-                                        <a href="{{ route('user.index')}}"><img src="" 
-                                            {{-- {{ asset('./images/logo.png') }} --}}
-                                                alt="Logo Image"></a>
+                                        <a href="{{ route('user.index')}}"><img src=" {{ asset('./images/logo/logo.png') }}" alt="Logo Image"></a>
                                     </div>
-                                    <p>Exercitation ullamco laboris nisi ut aliquip ex commodo consequat. Duis aute
-                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                        nulla pariatur.</p>
+                                    <p>Chúng tớ tạo ra những sự kiện tuyệt vời, giới thiệu những nghệ sĩ và người nổi tiếng, những người truyền cảm hứng và chữa lành tâm hồn. Ngoài ra, tiêu chí của Câu lạc bộ Sách chính là tạo ra không gian để phát triển văn hóa đọc bằng những người có cùng sự đam mê đối với sách - phát triển về trí tuệ con người. </p>
                                     <!-- Social Network of the Page -->
                                     <ul class="list-unstyled social-network">
                                         <li><a href="https://www.instagram.com/bookclubcantho?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa fa-instagram"></i></a></li>
@@ -300,10 +304,12 @@
                                         <li><i class="fa fa-map-marker"></i>
                                             <address>160, 30/4 Street, Ninh Kieu <br>Can Tho</address>
                                         </li>
-                                        <li><i class="fa fa-phone"></i><a href="tel:15553332211">+1 (555) 333 22
-                                                11</a></li>
-                                        <li><i class="fa fa-envelope-o"></i><a
-                                                href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#110;&#046;&#099;&#104;&#097;&#105;&#114;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#110;&#046;&#099;&#104;&#097;&#105;&#114;</a>
+                                        <li><i class="fa fa-phone"></i><a href="tel:0846460018">0846460018</a></li>
+                                        <li>
+                                            <i class="fa fa-envelope-o"></i>
+                                            <a href="mailto:bookclubct19@gmail.com">bookclubct19@gmail.com</a>
+                                                |
+                                            <a href="mailto:ThiNHNGDC210099@fpt.edu.vn">ThiNHNGDC210099@fpt.edu.vn</a>
                                         </li>
                                     </ul>
                                 </div>

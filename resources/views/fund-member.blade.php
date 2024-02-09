@@ -3,15 +3,15 @@
 @section('content')
     <main id="mt-main">
         <section class="mt-contact-banner mt-banner-22 wow fadeInUp" data-wow-delay="0.4s"
-            style="background-image: url(http://placehold.it/1920x325);">
+            style="background-image: url({{asset('./images/index/3.png')}});">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="text-center">PAY FUND</h1>
+                        <h1 class="text-center" style="color:rgb(75, 72, 72)">PAY FUND</h1>
                         <!-- Breadcrumbs of the Page -->
                         <nav class="breadcrumbs">
-                            <ul class="list-unstyled">
-                                <li><a href="{{ route('user.index') }}">Home <i class="fa fa-angle-right"></i></a></li>
+                            <ul class="list-unstyled" style="color:black">
+                                <li><a href="{{ route('user.index') }}" style="color:black">Home <i class="fa fa-angle-right"></i></a></li>
                                 <li>Pay fund</li>
                             </ul>
                         </nav>
@@ -79,11 +79,17 @@
                             <h2>Your amount needs to be paid</h2>
                             <h4>Remember to capture your transaction screen result and send to treasurer</h4>
                             <h5 style="font-weight: bold; color: rgb(181, 25, 25)">Syntax for transaction: [Your name] + [Month]</h5>
+                            <h4>Banking Id: <span id="accountID">0000 3967 661</span>
+                                <button onclick="copyAccountID()" class="btn btn-info" style="margin-left: 27%">
+                                    <i class="fa fa-clone"></i> Copy
+                                </button>
+                            </h4>
                                 <ul class="list-unstyled block">
                                     <li>
                                         <div class="txt-holder">
                                             <div class="text-wrap pull-left">
                                                 <strong class="title">Months</strong>
+                                                
                                                 <span id="monthList"></span>
                                             </div>
                                             <div class="text-wrap txt text-right pull-right">
@@ -102,7 +108,7 @@
                                     </li>
                                     <li>
                                         <div class="img-qr">
-                                            <img src="{{asset('/images/QR.png')}}" alt="" style="max-width: 100%">
+                                            <img src="{{asset('./images/QR.jpg')}}" alt="" style="max-width: 100%">
                                         </div>
                                     </li>
                                 </ul>                                
@@ -167,6 +173,18 @@
             return amount.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
         }
     });
+
+    function copyAccountID() {
+        var accountIDText = document.getElementById("accountID");
+        var range = document.createRange();
+        range.selectNode(accountIDText);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+        alert("Account ID copied!");
+    }
+
     </script>
     
 @endsection

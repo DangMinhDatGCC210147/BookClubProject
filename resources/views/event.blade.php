@@ -4,7 +4,7 @@
 
 <main id="mt-main">
 				<!-- Mt Contact Banner of the Page -->
-				<section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s" style="background-image: url(http://placehold.it/1920x205);">
+				<section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s" style="background-image: url({{asset('./images/index/1.png')}});">
 					<div class="container">
 						<div class="row">
 							<div class="col-xs-12 text-center">
