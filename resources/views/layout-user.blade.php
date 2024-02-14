@@ -118,7 +118,7 @@
                                     </a>
                                 </div>        
                                 <!-- mt icon list start here -->
-                                <div class="mt-logo"><h4 style="padding-left: 4vw; font-size: 100%">Welcome,<Strong> {{ Auth::user()->name }} </Strong></h4></div>
+                                <div class="mt-logo"><h4 style="padding-left: 4vw; font-size: 100%">Welcome,<Strong> {{ isset(Auth::user()->name) ? Auth::user()->name : "Guest" }} </Strong></h4></div>
                                 <ul class="mt-icon-list">
                                     <li class="hidden-lg hidden-md">
                                         <a href="#" class="bar-opener mobile-toggle">
@@ -156,9 +156,10 @@
                                                 style="display: none;">
                                                 @csrf
                                             </form>
-                                            <a href="#"
-                                                onclick="document.getElementById('logout-form').submit()">Logout</a>
-                                        @endif
+                                            <a href="#"onclick="document.getElementById('logout-form').submit()">Logout</a>
+                                            @else
+                                            <a href="{{route('login')}}">Login</a>
+                                            @endif
                                         </li>
                                     </ul>
                                 </nav>

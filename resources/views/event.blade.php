@@ -29,6 +29,11 @@
 							</div>
 						</div>
 						<div class="row">
+						@if($events->isEmpty())
+							<div style="text-align: center; margin-top: 20px; text-transform:uppercase" >
+								<h3 style="font-family: Arial, sans-serif; color: #261683;">There are no upcoming events at the moment.</h3>
+							</div>						
+						@else
 							@foreach ($events as $event)
 								<div class="col-xs-12 wow fadeInUp" data-wow-delay="0.4s">
 									<!-- Blog Post of the Page -->
@@ -57,6 +62,7 @@
 									<!-- Btn Holder of the Page end -->
 								</div>
 							@endforeach	
+						@endif
 						</div>
 					</div>
 				</div>

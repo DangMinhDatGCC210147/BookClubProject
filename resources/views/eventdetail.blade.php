@@ -4,7 +4,7 @@
     <main id="mt-main">
         <!-- Mt Contact Banner of the Page -->
         <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-            style="background-image: url(http://placehold.it/1920x205);">
+            style="background-image: url({{asset('./images/index/1.png')}});">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
@@ -46,12 +46,12 @@
                                 @endif
                                 <ul class="list-unstyled blog-nav">
                                     <h5>
-                                        <li> <a href="#"><i
-                                                    class="fa fa-calendar"></i>{{ $event->date->format('d/M/Y') }} </a></li>
+                                        <li> <a href="#"><i class="fa fa-calendar"></i>  {{ $event->date->format('d/M/Y') }} </a></li>
                                     </h5>
                                     <h5>
-                                        <li><a href="#"><i
-                                                    class="fa fa-clock-o"></i>{{ \Carbon\Carbon::parse($event->time_start)->format('H:i') }}
+                                        <li><a href="#">
+                                            <i class="fa fa-clock-o"></i>
+                                            {{ \Carbon\Carbon::parse($event->time_start)->format('H:i') }}
                                                 - {{ \Carbon\Carbon::parse($event->time_end)->format('H:i') }}</a></li>
                                     </h5>
                                     <h5>
@@ -59,74 +59,63 @@
                                         </li>
                                     </h5>
                                 </ul>
-                                <p>{{ $event->description_1 }}</p>
-                                <p>{{ $event->description_2 }}</p>
-                                <p>{{ $event->description_3 }}</p>
-                                <p>{{ $event->description_4 }}</p>
+                                <p style="color: #989898;font-weight:400">{!! nl2br(e($event->description_1)) !!}</p>
+                                <p style="color: #989898;font-weight:400">{!! nl2br(e($event->description_2)) !!}</p>
+                                <p style="color: #989898;font-weight:400">{!! nl2br(e($event->description_3)) !!}</p>
+                                <p style="color: #989898;font-weight:400">{!! nl2br(e($event->description_4)) !!}</p>
                             </div>
                         </article>
                         <a href="{{ route('user.event') }}">
                             <i class="fa fa-arrow-left"></i> Back to List Event
                         </a> 
-                        <!-- Blog Post of the Page end -->
-                        <!-- Mt Author Box of the Page -->
-                        {{-- <article class="mt-author-box fullwidth">
-                            <div class="author-img">
-                                <a href="#"><img src="http://placehold.it/145x145" alt="image description"></a>
-                            </div>
-                            <div class="author-txt">
-                                <h3><a href="#">Clara Wooden</a></h3>
-                                <p>Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.</p>
-                            </div>
-                        </article> --}}
-                        <!-- Mt Author Box of the Page end -->
                         <!-- Mt Comments Section of the Page end -->
-                        @if ($isMember)
-                            <div class="mt-comments-section fullwidth">
-                                <!-- Mt Leave Comments of the Page -->
-                                @if (!$isRegistered)
-                                    <h2>TO REGISTER FOR THE EVENT, PLEASE CLICK THE BUTTON BELOW</h2>
-                                @endif
-                                <div class="mt-leave-comment" style="display: flex">
+                        @if (Auth::check())
+                            @if ($isMember)
+                                <div class="mt-comments-section fullwidth">
+                                    <!-- Mt Leave Comments of the Page -->
                                     @if (!$isRegistered)
-                                        <form action="{{ route('one.event.register', ['event' => $event->id]) }}"
-                                            method="POST" class="comment-form">
-                                            @csrf
-                                            <fieldset>
-                                                <input type="hidden" name="idSt" id ="idSt"
-                                                    value="{{ session('idSt') }}">
-                                                <button type="submit" class="form-btn">Register</button>
-                                            </fieldset>
-                                        </form>
-                                        <form action="{{ route('one.event.cannot-join', ['event' => $event->id]) }}"
-                                            method="POST" class="comment-form reject">
-                                            @csrf
-                                            <fieldset>
-                                                <input type="hidden" name="idSt" id ="idSt"
-                                                    value="{{ session('idSt') }}">
-                                                <button id="yourButtonId" class="form-btn" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal5" data-whatever="@mdo">Cannot
-                                                    join</button>
-                                            </fieldset>
-                                        </form>
+                                        <h2>TO REGISTER FOR THE EVENT, PLEASE CLICK THE BUTTON BELOW</h2>
                                     @endif
+                                    <div class="mt-leave-comment" style="display: flex">
+                                        @if (!$isRegistered || !$isEventStarted)
+                                            <form action="{{ route('one.event.register', ['event' => $event->id]) }}"
+                                                method="POST" class="comment-form">
+                                                @csrf
+                                                <fieldset>
+                                                    <input type="hidden" name="idSt" id ="idSt"
+                                                        value="{{ session('idSt') }}">
+                                                    <button type="submit" class="form-btn">Register</button>
+                                                </fieldset>
+                                            </form>
+                                            <form action="{{ route('one.event.cannot-join', ['event' => $event->id]) }}"
+                                                method="POST" class="comment-form reject">
+                                                @csrf
+                                                <fieldset>
+                                                    <input type="hidden" name="idSt" id ="idSt"
+                                                        value="{{ session('idSt') }}">
+                                                    <button id="yourButtonId" class="form-btn" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal5" data-whatever="@mdo">Cannot
+                                                        join</button>
+                                                </fieldset>
+                                            </form>
+                                        @endif
+                                    </div>
+                                    <!-- Mt Leave Comments of the Page end -->
                                 </div>
-                                <!-- Mt Leave Comments of the Page end -->
-                            </div>
+                            @endif
+                            @if ($isEventStarted)
+                                <article class="mt-author-box fullwidth">
+                                    {{-- <div class="author-img">
+                                        <a href="#"><img src="http://placehold.it/145x145" alt="image description"></a>
+                                    </div> --}}
+                                    <div class="author-txt">
+                                        <h3><a href="#">NOTE FOR THE ACTIVITY</a></h3>
+                                        <p>{!! nl2br(e($event->comments)) !!}</p>
+                                    </div>
+                                </article>
+                            @endif
                         @endif
-                        @if ($isEventStarted)
-                            <article class="mt-author-box fullwidth">
-                                {{-- <div class="author-img">
-                                    <a href="#"><img src="http://placehold.it/145x145" alt="image description"></a>
-                                </div> --}}
-                                <div class="author-txt">
-                                    <h3><a href="#">NOTE FOR THE ACTIVITY</a></h3>
-                                    <p>{!! nl2br(e($event->comments)) !!}</p>
-                                </div>
-                            </article>
-                        @endif
+                        
                     </div>
                 </div>
             </div>

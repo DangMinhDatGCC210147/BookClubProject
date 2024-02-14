@@ -76,8 +76,8 @@ class EventController extends Controller
             // Redirect after successful data save
             return redirect('/events')->with('success', 'Event is created successfully.');
         } catch (\Exception $e) {
-            // Output error code and message
-            dd($e->getCode(), $e->getMessage());
+            $errorMessage = $e->getMessage();
+            return view('events.create', compact('errorMessage'));
         }
     }
 
@@ -109,6 +109,12 @@ class EventController extends Controller
         if ($request->hasFile('image')) {
             $imageName = $request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('images/events'), $imageName);
+
+            // Xoá hình ảnh cũ
+            if ($event->image) {
+                unlink(public_path($event->image));
+            }
+
             // Cập nhật đường dẫn hình ảnh trong trường 'image'
             $event->update(['image' => 'images/events/' . $imageName]);
         }
@@ -142,28 +148,30 @@ class EventController extends Controller
     public function eventDetail($id){
         $event = Event::find($id);
     
-        // Kiểm tra xem người dùng có đã đăng ký sự kiện chưa
+        $userId = Auth::check() ? Auth::user()->idSt : session('idSt');
+    
+        // Kiểm tra xem người dùng đã đăng ký sự kiện chưa
         $isRegistered = DB::table('member_event')
-            ->where('idSt', Auth::user()->idSt)
+            ->where('idSt', $userId)
             ->where('idEvent', $event->id)
             ->exists();
-
-        $idStToCheck = session('idSt');
-        $isMember = Member::where('idSt', $idStToCheck)->exists();
-
+    
+        // Kiểm tra xem người dùng là thành viên hay không
+        $isMember = Member::where('idSt', $userId)->exists();
+    
+        // Lấy thông tin ngày tháng của sự kiện
         $eventDate = Carbon::parse($event->date);
         $event->day = $eventDate->format('d');
         $event->month = $eventDate->format('M');
         
         // Kiểm tra nếu thời gian hiện tại lớn hơn thời gian bắt đầu sự kiện
-        $eventDate = Carbon::parse($event->date);
         $dateOnly = $eventDate->format('Y-m-d');
         $currentTime = Carbon::now();
         $eventStartDateTime = Carbon::parse($dateOnly . ' ' . $event->time_start);
         $isEventStarted = $currentTime->gt($eventStartDateTime);
-
+    
         return view('eventdetail', compact('event','isRegistered','isMember', 'isEventStarted'));
-    }   
+    }    
     
     public function registerOneEvent(Request $request, $event)
     {
@@ -175,7 +183,7 @@ class EventController extends Controller
         ]);
     
         // Redirect or return a response
-        return redirect()->back()->with('success', 'Registered to participate successfully..');
+        return redirect()->back()->with('success', 'Registered to participate successfully.');
     }
     
     public function cannotJoinEvent(Request $request, $event)

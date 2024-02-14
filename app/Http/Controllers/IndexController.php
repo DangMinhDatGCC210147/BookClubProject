@@ -18,13 +18,14 @@ class IndexController extends Controller
     }
     public function index()
     {
-        if (Auth::check()) {
-            // Nếu đã đăng nhập, hiển thị trang chính
-            return view('index');
-        } else {
-            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-            return redirect('/');
-        }
+        return view('index');
+        // if (Auth::check()) {
+        //     // Nếu đã đăng nhập, hiển thị trang chính
+        //     return view('index');
+        // } else {
+        //     // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+        //     return redirect('/');
+        // }
     }
 
     public function indexleader()

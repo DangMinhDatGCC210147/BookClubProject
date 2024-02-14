@@ -118,7 +118,11 @@ class MemberController extends Controller
         if ($request->hasFile('image')) {
             $imageName = $request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('images/members'), $imageName);
-
+            
+            // Xoá hình ảnh cũ
+            if ($member->image) {
+                unlink(public_path($member->image));
+            }
             // Cập nhật đường dẫn hình ảnh trong trường 'image'
             $member->update(['image' => 'images/members/' . $imageName]);
         }

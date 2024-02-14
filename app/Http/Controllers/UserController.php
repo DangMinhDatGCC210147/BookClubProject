@@ -58,7 +58,7 @@ class UserController extends Controller
                 return redirect('/leader')->with('success', 'Login as leader successfully');
             } elseif ($user->role == 1) {
                 // Nếu 'role' là 1, chuyển hướng đến trang homepage
-                return redirect('/homepage')->with('success', 'Login as user successfully');
+                return redirect('/')->with('success', 'Login as user successfully');
             } else {
             
             }
@@ -71,7 +71,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('success', 'You have logged out successfully.');
+        return redirect()->route('user.index')->with('success', 'You have logged out successfully.');
     }
     
     
