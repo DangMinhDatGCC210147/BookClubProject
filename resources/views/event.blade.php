@@ -4,11 +4,11 @@
 
 <main id="mt-main">
 				<!-- Mt Contact Banner of the Page -->
-				<section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s" style="background-image: url({{asset('./images/index/1.png')}});">
+				<section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s" style="background-image: url({{asset('./images/index/events.jpg')}});">
 					<div class="container">
 						<div class="row">
 							<div class="col-xs-12 text-center">
-								<h1>LIST OF EVENT</h1>
+								<h1></h1>
 							</div>
 						</div>
 					</div>

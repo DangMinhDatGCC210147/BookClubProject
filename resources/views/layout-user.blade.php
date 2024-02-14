@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookClub | Official Website</title>
     <!-- include the site stylesheet -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('./images/logo/logo.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('./images/logo/logoOf.png') }}">
     <link
         href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic%7cMontserrat:400,700%7cOxygen:400,300,700'
         rel='stylesheet' type='text/css'>

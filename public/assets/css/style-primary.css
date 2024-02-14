@@ -10095,7 +10095,7 @@ body.side-header-green .side-header .side-header-close {
 
 /*Login & Resister BG*/
 .login-register-bg {
-  background-image: url(./../../images/index/4.png);
+  background-image: url(./../../images/index/login.jpg); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

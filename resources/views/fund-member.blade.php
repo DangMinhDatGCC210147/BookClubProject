@@ -3,11 +3,11 @@
 @section('content')
     <main id="mt-main">
         <section class="mt-contact-banner mt-banner-22 wow fadeInUp" data-wow-delay="0.4s"
-            style="background-image: url({{asset('./images/index/3.png')}});">
+            style="background-image: url({{asset('./images/index/fund.jpg')}});">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="text-center" style="color:rgb(75, 72, 72)">PAY FUND</h1>
+                        <h1 class="text-center" style="color:rgb(75, 72, 72)"></h1>
                         <!-- Breadcrumbs of the Page -->
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled" style="color:black">

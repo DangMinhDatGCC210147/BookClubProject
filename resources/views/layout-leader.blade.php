@@ -54,8 +54,8 @@
                     <!-- Header Logo (Header Left) Start -->
                     <div class="header-logo col-auto main-logo">
                         <a href="{{ route('leaders.index')}}">
-                            <img src="{{asset('./images/logo/logo.png')}}" alt="Logo">
-                            <img src="{{asset('./images/logo/logo.png')}}" class="logo-light" alt="Logo">
+                            <img src="{{asset('./images/logo/logoOf.png')}}" alt="Logo">
+                            <img src="{{asset('./images/logo/logoOf.png')}}" class="logo-light" alt="Logo">
                         </a>
                     </div><!-- Header Logo (Header Left) End -->
 

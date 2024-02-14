@@ -6,11 +6,11 @@
     <main id="mt-main">
         <!-- Mt Content Banner of the Page -->
         <section class="mt-contact-banner wow fadeInUp" data-wow-delay="0.4s"
-            style="background-image: url({{asset('./images/index/1.png')}});">
+            style="background-image: url({{asset('./images/index/home.jpg')}});">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <h1>BOOK CLUB HOMEPAGE</h1>
+                        <h1></h1>
                         <nav class="breadcrumbs">
                             <ul class="list-unstyled">
                                 <li><a href="">home</a></li>
@@ -29,7 +29,7 @@
                     <div class="col-xs-12">
                         <div class="txt">
                             <h2>WHO WE ARE?</h2>
-                            <p>Tại BookClub Greenwich, chúng tớ là điểm giao lưu văn hóa, nơi thắt chặt những tâm hồn đam mê văn hóa đọc. Nơi đây không chỉ là một câu lạc bộ đọc sách, mà chúng tớ tự hào là một gia đình, nơi mọi người được mời gọi để chia sẻ suy nghĩ, thảo luận và khám phá thế giới thông qua từng trang sách. Đồng thời, chúng tớ còn tạo ra những sự kiện tuyệt vời, giới thiệu những nghệ sĩ và người nổi tiếng, những người truyền cảm hứng và chữa lành tâm hồn. Ngoài ra, tiêu chí của Câu lạc bộ Sách chính là tạo ra không gian để phát triển văn hóa đọc bằng những người có cùng sự đam mê đối với sách - phát triển về trí tuệ con người. Hãy trở thành một phần của gia đình chúng tớ, nơi mà chúng ta cùng nhau cùng nhau tìm hiểu và chia sẻ niềm đam mê với văn hóa và nghệ thuật.
+                            <p>Tại Greenwich BookClub , chúng tớ là điểm giao lưu văn hóa, nơi thắt chặt những tâm hồn đam mê văn hóa đọc. Nơi đây không chỉ là một câu lạc bộ đọc sách, mà chúng tớ tự hào là một gia đình, nơi mọi người được mời gọi để chia sẻ suy nghĩ, thảo luận và khám phá thế giới thông qua từng trang sách. Đồng thời, chúng tớ còn tạo ra những sự kiện tuyệt vời, giới thiệu những nghệ sĩ và người nổi tiếng, những người truyền cảm hứng và chữa lành tâm hồn. Ngoài ra, tiêu chí của Câu lạc bộ Sách chính là tạo ra không gian để phát triển văn hóa đọc bằng những người có cùng sự đam mê đối với sách - phát triển về trí tuệ con người. Hãy trở thành một phần của gia đình chúng tớ, nơi mà chúng ta cùng nhau cùng nhau tìm hiểu và chia sẻ niềm đam mê với văn hóa và nghệ thuật.
                             </p>
                             <h2>Join Us: Let's Explore the World of Books Together</h2>
                             <p>Bạn là người yêu sách? Bạn muốn tham gia vào một cộng đồng năng động và chia sẻ những niềm đam mê với những người khác? Hãy đến với BookClub Greenwich Việt Nam tại Cần Thơ! Chúng tôi mong muốn chào đón bạn để cùng nhau khám phá thế giới tuyệt vời của sách và văn hóa.</p>
