@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Member;
 use App\Models\Event;
+use App\Models\Post;
 use App\Models\TotalFunds;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -55,5 +56,10 @@ class IndexController extends Controller
         });
     
         return view('event', compact('events'));
-    }    
+    }   
+    
+    public function post(){
+        $posts = Post::all();
+        return view('posts', compact('posts'));
+    }
 }

@@ -169,6 +169,7 @@
                             <ul class="side-header-sub-menu">
                                 <li><a href="{{ route('members.index')}}"><span>Members</span></a></li>
                                 <li><a href="{{ route('events.index')}}"><span>Events</span></a></li>
+                                <li><a href="{{ route('posts.index')}}"><span>Posts</span></a></li>
                                 <li><a href="{{ route('events.list')}}"><span>List Register Event</span></a></li>
                                 <li><a href="{{ route('attendances.index')}}"><span>List Attedance</span></a></li>
                                 <li><a href="{{ route('funds.index') }}"><span>Pay Fund</span></a></li>

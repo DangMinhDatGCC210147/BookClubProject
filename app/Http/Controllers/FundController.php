@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class FundController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $funds = Fund::all();
@@ -178,6 +175,16 @@ class FundController extends Controller
     
         $successMessage = 'You have successfully paid for the following months: ' . $newMonthsNames;
         return redirect()->route('funds.user.index')->with(['success' => $successMessage]);
-    }       
+    }
+
+    private function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }     
 
 }

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date('dateOfBirth');
             $table->string('course', 5);
             $table->string('email');
-            $table->string('phoneNumber');
-            $table->date('joiningDate');
+            $table->string('phoneNumber')->nullable();
+            $table->date('joiningDate')->nullable();
             $table->timestamps();
 
             $table->foreign('idSt')->references('idSt')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');

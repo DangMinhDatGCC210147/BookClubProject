@@ -18,10 +18,10 @@ return new class extends Migration
             $table->date('date');
             $table->string('venue');
             $table->integer('score');
-            $table->longText('description_1');
-            $table->longText('description_2');
-            $table->longText('description_3');
-            $table->longText('description_4');
+            $table->longText('description_1')->nullable();
+            $table->longText('description_2')->nullable();
+            $table->longText('description_3')->nullable();
+            $table->longText('description_4')->nullable();
             $table->text('comments')->nullable();
             $table->time('time_start');
             $table->time('time_end');

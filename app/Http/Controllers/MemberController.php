@@ -25,45 +25,45 @@ class MemberController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-        // if (empty($request->image)) {
-        //     return redirect()->back()->with('warning', 'Image fields are required. Please fill in all the fields.');
-        // }
         try {
-        // Validate the request
-        $request->validate([
-            'idSt' => 'required|string|max:9|unique:members,idSt',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-            'name' => 'required|string',
-            'dateOfBirth' => 'required|date',
-            'course' => 'required|string|max:5',
-            'email' => 'required|email|unique:members,email',
-            'phoneNumber' => 'required|string|regex:/^0[0-9]{9}$/',
-            'joiningDate' => 'required|date',
-            'gender' => 'required|int',
-        ]);
-        
-            // Lưu tập tin vào storage/app/public/images
-            $imageName = $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('images/members'), $imageName);
+            // Validate the request
+            $request->validate([
+                'idSt' => 'required|string|max:9|unique:members,idSt',
+                'name' => 'required|string',
+                'dateOfBirth' => 'required|date',
+                'course' => 'required|string|max:5',
+                'email' => 'required|email|unique:members,email',
+                'gender' => 'required|int',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            ]);
 
-            $dateOfBirth = Carbon::createFromFormat('Y-m-d', $request->input('dateOfBirth'));
-            $joiningDate = Carbon::createFromFormat('Y-m-d', $request->input('joiningDate'));
+            // Check if image is uploaded
+            $imageName = null;
+            if ($request->hasFile('image')) {
+                $imageName = $request->file('image')->getClientOriginalName();
+                $request->file('image')->move(public_path('images/members'), $imageName);
+            }
 
-            // Lưu dữ liệu vào cơ sở dữ liệu với đường dẫn tập tin
+            // Check if joiningDate is provided, otherwise set it to null
+            $joiningDate = $request->input('joiningDate') ? Carbon::createFromFormat('Y-m-d', $request->input('joiningDate')) : null;
+
+            // Check if phoneNumber is provided, otherwise set it to null
+            $phoneNumber = $request->input('phoneNumber') ? $request->input('phoneNumber') : null;
+
+            // Create member
             $member = Member::create([
                 'idSt' => $request->input('idSt'),
-                'image' => 'images/members/' . $imageName,
+                'image' => $imageName ? 'book-club-management/public/images/members/' . $imageName : null,
                 'name' => $request->input('name'),
                 'gender' => $request->input('gender'),
-                'dateOfBirth' => $dateOfBirth,
+                'dateOfBirth' => Carbon::createFromFormat('Y-m-d', $request->input('dateOfBirth')),
                 'course' => $request->input('course'),
                 'email' => $request->input('email'),
-                'phoneNumber' => $request->input('phoneNumber'),
+                'phoneNumber' => $phoneNumber,
                 'joiningDate' => $joiningDate,
             ]);
 
-            // Lưu idSt vào bảng funds
+            // Create corresponding fund entry
             Fund::create([
                 'idSt' => $member->idSt,
                 'jan' => 0,
@@ -80,18 +80,13 @@ class MemberController extends Controller
                 'dec' => 0,
                 'total' => 0,
             ]);
-            // Chuyển hướng sau khi lưu dữ liệu
+
+            // Redirect after successful submission
             return redirect('/members')->with('success', 'Member has been saved successfully!');
         } catch (\Exception $e) {
-            // $errors = $validator->errors()->all();
-            // // Display error messages using toastr
-            // foreach ($errors as $error) {
-            //     toastr()->error($error);
-            // }
             return back()->withInput()->with('error', 'Enter information again!');
         }
     }
-    
 
     public function edit(Member $member, User $users)
     {
@@ -102,49 +97,61 @@ class MemberController extends Controller
 
     public function update(Request $request, Member $member)
     {
-        // Validate the request
-        $request->validate([
-            'idSt' => 'required|string|max:9|unique:members,idSt,' . $member->id, // Thêm một điều kiện unique để loại trừ ID của thành viên hiện tại
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
-            'name' => 'required|string',
-            'dateOfBirth' => 'required|date',
-            'course' => 'required|string|max:5',
-            'email' => 'required|email|unique:members,email,' . $member->id, // Thêm một điều kiện unique để loại trừ ID của thành viên hiện tại
-            'phoneNumber' => 'required|string',
-            'joiningDate' => 'required|date',
-        ]);
+        try {
+            // Validate the request
+            $request->validate([
+                'idSt' => 'required|string|max:9|unique:members,idSt,' . $member->id,
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+                'name' => 'required|string',
+                'dateOfBirth' => 'required|date',
+                'course' => 'required|string|max:5',
+                'email' => 'required|email|unique:members,email,' . $member->id,
+                'phoneNumber' => 'string',
+                'joiningDate' => 'date',
+            ]);
 
-        // Lưu tập tin vào thư mục public/images nếu có sự thay đổi
-        if ($request->hasFile('image')) {
-            $imageName = $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('images/members'), $imageName);
-            
-            // Xoá hình ảnh cũ
-            if ($member->image) {
-                unlink(public_path($member->image));
+            // Check if image is uploaded
+            $imageName = null;
+            if ($request->hasFile('image')) {
+                $imageName = $request->file('image')->getClientOriginalName();
+                $request->file('image')->move(public_path('images/members'), $imageName);
+                // Update image path
+                $member->update(['image' => 'book-club-management/public/images/members/' . $imageName]);
             }
-            // Cập nhật đường dẫn hình ảnh trong trường 'image'
-            $member->update(['image' => 'images/members/' . $imageName]);
+
+            // Check if joiningDate is provided, otherwise set it to null
+            $joiningDate = $request->input('joiningDate') ? Carbon::createFromFormat('Y-m-d', $request->input('joiningDate')) : null;
+
+            // Check if phoneNumber is provided, otherwise set it to null
+            $phoneNumber = $request->input('phoneNumber') ? $request->input('phoneNumber') : null;
+
+            // Update member information
+            $member->update([
+                'idSt' => $request->input('idSt'),
+                'name' => $request->input('name'),
+                'gender' => $request->input('gender'),
+                'dateOfBirth' => Carbon::createFromFormat('Y-m-d', $request->input('dateOfBirth')),
+                'course' => $request->input('course'),
+                'email' => $request->input('email'),
+                'phoneNumber' => $phoneNumber,
+                'joiningDate' => $joiningDate,
+            ]);
+
+            // Redirect after successful update
+            return redirect()->route('members.index')->with('success', 'Member updated successfully.');
+        } catch (\Exception $e) {
+            return back()->withInput()->with('error', 'Enter information again!');
         }
-        
-        // Cập nhật thông tin thành viên
-        $member->update([
-            'idSt' => $request->input('idSt'),
-            'name' => $request->input('name'),
-            'gender' => $request->input('gender'),
-            'dateOfBirth' => Carbon::createFromFormat('Y-m-d', $request->input('dateOfBirth')),
-            'course' => $request->input('course'),
-            'email' => $request->input('email'),
-            'phoneNumber' => $request->input('phoneNumber'),
-            'joiningDate' => Carbon::createFromFormat('Y-m-d', $request->input('joiningDate')),
-        ]);
-        
-        // Chuyển hướng sau khi cập nhật thông tin
-        return redirect()->route('members.index')->with('success', 'Member updated successfully.');
     }
+
 
     public function destroy(Member $member)
     {
+        $imagePath = public_path('images/members/') . $member->image;
+        if (file_exists($imagePath)) {
+            // Xoá hình ảnh từ thư mục
+            unlink($imagePath);
+        }
         // Xóa thành viên từ cơ sở dữ liệu
         $member->delete();
         return redirect('/members')->with('success', 'Member deleted successfully.');

@@ -1,0 +1,238 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
+.snip1518 {
+    font-family: "Lato", Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    min-width: 250px;
+    max-width: 310px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #2b2b2b;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.snip1518 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.snip1518 img {
+    max-width: 100%;
+    vertical-align: top;
+    position: relative;
+}
+
+.snip1518 figcaption {
+    padding: 10%;
+    padding-bottom: calc(25%);
+    background-color: #ffffff;
+}
+
+.snip1518 h3 {
+    font-family: "Oswald";
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 3px 0;
+}
+
+.snip1518 h5 {
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.snip1518 footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.065);
+    padding: 0 20px;
+    font-size: 13px;
+    line-height: 50px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.snip1518 footer .icons {
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+.snip1518 footer .icons>div {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.snip1518 footer .icons i {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 1em;
+}
+
+.snip1518 a {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.embed-responsive::before {
+    display: block;
+    content: "";
+}
+
+/* Duy trì tỷ lệ khung hình 16:9 */
+.embed-responsive-16by9::before {
+    padding-top: 56.25%;
+}
+
+.embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.mt-detail-sec {
+    justify-content: center;
+    /* Canh giữa theo chiều ngang */
+    align-items: center;
+    /* Canh giữa theo chiều dọc */
+}
+
+.container.post {
+    width: 100%;
+    /* Đảm bảo container chiếm đầy chiều ngang */
+    max-width: 600px;
+    /* Hoặc một giá trị tối đa nào đó nếu bạn muốn giới hạn chiều rộng của form */
+}
+
+.row.post {
+    width: 100%;
+    /* Đảm bảo row chiếm đầy chiều ngang của container */
+}
+
+.bill-detail {
+    width: 100%;
+    /* Đảm bảo form chiếm đầy chiều ngang của row */
+    display: flex;
+    /* Thiết lập form là flexbox */
+    justify-content: center;
+    /* Canh giữa nội dung của form */
+}
+
+.like_post.process-btn {
+    padding: 10px 20px;
+    /* Đặt padding cho nút để tăng kích thước clickable */
+    text-align: center;
+    /* Canh giữa văn bản trong nút */
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 25px 20px 22px;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #e8e8e8;
+    border-color: #ffe2e2;
+    border-style: solid;
+    border-width: 9px;
+    border-radius: 35px;
+    font-size: 25px;
+    font-weight: 900;
+    color: rgb(134, 124, 124);
+    font-family: monospace;
+    transition: transform 400ms cubic-bezier(.68, -0.55, .27, 2.5),
+        border-color 400ms ease-in-out,
+        background-color 400ms ease-in-out;
+    word-spacing: -2px;
+}
+
+@keyframes movingBorders {
+    0% {
+        border-color: #fce4e4;
+    }
+
+    50% {
+        border-color: #ffd8d8;
+    }
+
+    90% {
+        border-color: #fce4e4;
+    }
+}
+
+button:hover {
+    background-color: #eee;
+    transform: scale(105%);
+    animation: movingBorders 3s infinite;
+}
+
+button svg {
+    margin-right: 11px;
+    fill: rgb(255, 110, 110);
+    transition: opacity 100ms ease-in-out;
+}
+
+.filled {
+    position: absolute;
+    opacity: 0;
+    top: 20px;
+    left: 22px;
+}
+
+@keyframes beatingHeart {
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+button:hover .empty {
+    opacity: 0;
+}
+
+button:hover .filled {
+    opacity: 1;
+    animation: beatingHeart 1.2s infinite;
+}

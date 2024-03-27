@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,10 @@ class UserController extends Controller
         if (empty($request->idSt) || empty($request->name) || empty($request->email) || empty($request->password)) {
             return redirect()->back()->with('warning', 'All fields are required. Please fill in all the fields.');
         }
+
+        // if (!preg_match("/^[a-zA-Z0-9._%+-]+@fpt.edu.vn$/", $request->email)) {
+        //     return redirect()->back()->with('error', 'Email must be an FPT University email address.');
+        // }
         
         $existingUser = User::where('idSt', $request->idSt)->first();
 
@@ -29,7 +34,8 @@ class UserController extends Controller
 
         $request->merge(['password' =>Hash::make($request->password)]);
         try {
-            User::create($request->all());
+            $user = User::create($request->all());
+            // event(new UserRegistered($user));
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -73,6 +79,5 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('user.index')->with('success', 'You have logged out successfully.');
     }
-    
     
 }

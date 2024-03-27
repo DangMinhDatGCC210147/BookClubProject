@@ -27,7 +27,7 @@ class AttendanceController extends Controller
     public function create()
     {
         $users = User::all();
-        $events = Event::all();
+        $events = Event::where('status', 1)->orderBy('date', 'desc')->get();
         return view('attendances.create', compact('users','events'));
     }
 

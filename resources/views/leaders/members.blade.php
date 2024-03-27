@@ -76,7 +76,7 @@
                                     <td>{{ $member->course }}</td>
                                     <td>{{ $member->email }}</td>
                                     <td>{{ $member->phoneNumber }}</td>
-                                    <td>{{ $member->joiningDate->format('d-m-Y') }}</td>
+                                    <td>{{ $member->joiningDate ? $member->joiningDate->format('d-m-Y') : '' }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <a href="{{ route('members.edit', ['member' => $member->id]) }}" class="mr-2"><i class="ti ti-pencil text-info"></i></a>

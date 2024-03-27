@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-6 pb-1">
                             <select id="idEventSelect" name="idEvent" class="form-control">
-                                <option value="" disabled selected>Select Event Name</option>
+                                {{-- <option value="" disabled selected>Select Event Name</option> --}}
                                 @foreach($events as $event)
                                     <option value="{{ $event->id }}">
                                         {{ $event->nameEvent }}

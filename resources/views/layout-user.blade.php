@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <!-- set the viewport width and initial-scale on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>BookClub | Official Website</title>
     <!-- include the site stylesheet -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('./images/logo/logoOf.png') }}">
@@ -134,7 +135,7 @@
                                     <ul>
                                         {{-- <li><h4>{{ session('idSt') }}</h4></li> --}}
                                         <li><a class="" href="{{ route('user.index') }}">HOME</a></li>
-                                        {{-- <li class=""><a href="{{ route('members.index') }}">MEMBERS</a></li> --}}
+                                        <li class=""><a href="{{ route('user.post') }}">POST</a></li>
                                         <li>
                                             <a class="" href="{{ route('user.event') }}">EVENT</a>
                                         </li>

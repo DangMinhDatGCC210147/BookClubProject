@@ -34,22 +34,25 @@ class EventController extends Controller
         try {
             // Validate the request
             $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
                 'nameEvent' => 'required|string',
                 'time_start' => 'required',
                 'time_end' => 'required',
                 'date' => 'required|date',
                 'score' => 'required|integer',
                 'venue' => 'required|string',
-                'description_1' => 'required|string',
-                'description_2' => 'required|string',
-                'description_3' => 'required|string',
-                'description_4' => 'required|string',
                 'status' => 'required|int',
             ]);
 
-            $imageName = $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('images/events'), $imageName);
+            $imageName = null; // Khởi tạo biến $imageName với giá trị mặc định là null
+
+            if ($request->hasFile('image')) {
+                $request->validate([
+                    'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
+                ]);
+                // Nếu người dùng đã tải lên một tệp hình ảnh, thực hiện lưu tệp và gán tên tệp vào biến $imageName
+                $imageName = $request->file('image')->getClientOriginalName();
+                $request->file('image')->move(public_path('images/events'), $imageName);
+            }
 
             $date = Carbon::createFromFormat('Y-m-d', $request->input('date'));
 
@@ -57,9 +60,8 @@ class EventController extends Controller
             $timeStart = $request->input('time_start');
             $timeEnd = $request->input('time_end');
 
-            // Save data to the database
-            Event::create([
-                'image' => 'images/events/' . $imageName,
+            // Tạo sự kiện chỉ khi có tệp hình ảnh được tải lên
+            $eventData = [
                 'nameEvent' => $request->input('nameEvent'),
                 'time_start' => $timeStart,
                 'time_end' => $timeEnd,
@@ -71,7 +73,15 @@ class EventController extends Controller
                 'description_3' => $request->input('description_3'),
                 'description_4' => $request->input('description_4'),
                 'status' => $request->input('status')
-            ]);
+            ];
+
+            // Nếu có tệp hình ảnh, thêm tên hình ảnh vào dữ liệu sự kiện
+            if ($imageName) {
+                $eventData['image'] = 'book-club-management/public/images/events/' . $imageName;
+            }
+
+            // Save data to the database
+            Event::create($eventData);
 
             // Redirect after successful data save
             return redirect('/events')->with('success', 'Event is created successfully.');
@@ -88,7 +98,7 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
-        // dd($event);
+        // dd($request->all());
         // Validate the request
         $date = Carbon::createFromFormat('Y-m-d', $request->input('date'));
         $request->validate([
@@ -99,24 +109,14 @@ class EventController extends Controller
             'date' => 'required|date',
             'score' => 'required|integer',
             'venue' => 'required|string',
-            'description_1' => 'required|string',
-            'description_2' => 'required|string',
-            'description_3' => 'required|string',
-            'description_4' => 'required|string',
         ]);
-
         // Lưu tập tin vào thư mục public/images nếu có sự thay đổi
         if ($request->hasFile('image')) {
             $imageName = $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('images/events'), $imageName);
-
-            // Xoá hình ảnh cũ
-            if ($event->image) {
-                unlink(public_path($event->image));
-            }
+            $request->file('image')->move(public_path('book-club-management/public/images/events'), $imageName);
 
             // Cập nhật đường dẫn hình ảnh trong trường 'image'
-            $event->update(['image' => 'images/events/' . $imageName]);
+            $event->update(['image' => 'images/events/' .$imageName]);
         }
 
         // Cập nhật thông tin sự kiện
